@@ -5,26 +5,26 @@ const result = document.getElementById("result");
 const apiURL = "https://api.lyrics.ovh";
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    searchValue = search.value.trim();
+  e.preventDefault();
+  searchValue = search.value.trim();
 
-    if (!searchValue) {
-        alert("Type the name of the song or the artist");
-    } else {
-        searchSong(searchValue);
-    }
+  if (!searchValue) {
+    alert("Type the name of the song or the artist");
+  } else {
+    searchSong(searchValue);
+  }
 });
 
 // search by song or artist
 async function searchSong(searchValue) {
-    const searchResult = await fetch(`${apiURL}/suggest/${searchValue}`);
-    const data = await searchResult.json();
-    showData(data);
+  const searchResult = await fetch(`${apiURL}/suggest/${searchValue}`);
+  const data = await searchResult.json();
+  showData(data);
 }
 
 //updating DOM
 function showData(data) {
-    result.innerHTML = `<ul class = "song-list">
+  result.innerHTML = `<ul class="song-list">
             ${data.data
               .map(
                 (song) =>
@@ -35,16 +35,16 @@ function showData(data) {
                         </strong>
                         ${song.title}
                     </div>
-                    <span data-artist ="${song.artist.name}" data-songtitle ="${song.title}">
+                    <span data-artist="${song.artist.name}" data-songtitle="${song.title}">
                         get lyrics
                     </span>
                 </li>`
               )
-              .join('')}
+              .join("")}
         </ul>`;
 }
 
-result.addEventListener("click", e => {
+result.addEventListener("click", (e) => {
   const clickedElement = e.target;
 
   if (clickedElement.tagName === "SPAN") {
@@ -64,8 +64,8 @@ async function getLyrics(artist, songTitle) {
                     <h2>
                         <strong>
                             ${artist}
-                        </strong>
-                        -${songTitle}
+                       </strong>
+                        - ${songTitle}
                     </h2>
                     <p>${lyrics}</p>
                     `;
