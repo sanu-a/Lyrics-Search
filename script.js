@@ -6,7 +6,7 @@ const apiURL = "https://api.lyrics.ovh";
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  searchValue = search.value.trim();
+  const searchValue = search.value.trim();
 
   if (!searchValue) {
     alert("Type the name of the song or the artist");
@@ -21,7 +21,6 @@ async function searchSong(searchValue) {
   const data = await searchResult.json();
   showData(data);
 }
-
 //updating DOM
 function showData(data) {
   result.innerHTML = `<ul class="song-list">
@@ -61,11 +60,8 @@ async function getLyrics(artist, songTitle) {
 
   const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
   result.innerHTML = `
-                    <h2>
-                        <strong>
-                            ${artist}
-                       </strong>
-                        - ${songTitle}
+                    <h2 class="final-name">
+                          ${artist} - ${songTitle}
                     </h2>
                     <p>${lyrics}</p>
                     `;
