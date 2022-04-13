@@ -27,7 +27,7 @@ function showData(data) {
             ${data.data
               .map(
                 (song) =>
-                  `<li>
+                  `<li class="list-item">
                     <div>
                         <strong>
                             ${song.artist.name}
