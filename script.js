@@ -24,10 +24,9 @@ async function searchSong(searchValue) {
 //updating DOM
 function showData(data) {
   result.innerHTML = `<ul class="song-list">
-            ${data.data
-              .map(
-                (song) =>
-                  `<li class="list-item">
+            ${data.data.map(
+              (song) =>
+                `<li class="list-item">
                     <div>
                         <strong>
                             ${song.artist.name}
@@ -38,8 +37,7 @@ function showData(data) {
                         get lyrics
                     </span>
                 </li>`
-              )
-              .join("")}
+            )}
         </ul>`;
 }
 
